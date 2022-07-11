@@ -6,6 +6,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class BaseTests {
     private WebDriver driver;
     protected HomePage homePage;
 
+    @BeforeClass
     public void setUp(){
         ChromeDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -35,13 +38,15 @@ public class BaseTests {
 
         homePage = new HomePage(driver);
 
+    }
 
-
+    @AfterClass
+    public void tearDown(){
         driver.quit();
     }
 
-    public static void main(String args[]){
-        BaseTests tests = new BaseTests();
-        tests.setUp();
-    }
+//    public static void main(String args[]){
+//        BaseTests tests = new BaseTests();
+//        tests.setUp();
+//    }
 }
