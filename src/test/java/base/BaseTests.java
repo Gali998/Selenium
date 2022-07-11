@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.HomePage;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class BaseTests {
 
     private WebDriver driver;
+    protected HomePage homePage;
 
     public void setUp(){
         ChromeDriverManager.chromedriver().setup();
@@ -26,12 +28,16 @@ public class BaseTests {
 //        List<WebElement> webElement = (List<WebElement>) driver.findElement(By.tagName("a"));
 //        System.out.println(webElement.size());
 //
-        WebElement inputLink = driver.findElement(By.linkText("Inputs"));
-        inputLink.click();
+//        WebElement inputLink = driver.findElement(By.linkText("Inputs"));
+//        inputLink.click();
+//
+//        System.out.println(driver.getTitle());
 
-        System.out.println(driver.getTitle());
+        homePage = new HomePage(driver);
 
-        //driver.quit();
+
+
+        driver.quit();
     }
 
     public static void main(String args[]){
