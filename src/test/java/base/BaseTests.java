@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class BaseTests {
@@ -22,6 +23,16 @@ public class BaseTests {
     public void setUp(){
         ChromeDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        /*
+        * Takes 2 arguments
+        * amount of time to wait,a time unit
+        * Any time web driver need to interact with element then
+        * it should pause website upto 30 seconds until finds an
+        * elements.If you find element before 30 sec you'll
+        * interact with it.
+        *
+        * */
+        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("https://the-internet.herokuapp.com/");
 
 //        driver.manage().window().maximize();
